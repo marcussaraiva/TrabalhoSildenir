@@ -1,4 +1,4 @@
-package classes;
+package Projeto.classes;
 
 
 public class Disciplina {
