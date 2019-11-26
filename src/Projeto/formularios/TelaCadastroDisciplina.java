@@ -84,6 +84,7 @@ public class TelaCadastroDisciplina extends javax.swing.JFrame {
         jButtonLimpar.setText("Limpar");
 
         jLabelHoras.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabelHoras.setForeground(new java.awt.Color(255, 255, 255));
         jLabelHoras.setText("Horas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
