@@ -12,5 +12,5 @@ public class Disciplina {
     private Curso curso;
     private Frequencia frequencia;
     private Nota nota;
-   //teste
+    
 }
