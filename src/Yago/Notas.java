@@ -5,40 +5,65 @@
  */
 package Yago;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yagov
  */
- class Materia{
-     int k=0;
-     int qt = trabalho.getQuantAlunos();
-     String nome_materia;
-     double nota[] = new double[qt];
-
-    public String getNome_materia() {
-        return nome_materia;
+class Materias{
+    String nome;
+    String[] alunos = Alunos.getAlunos();
+    String[] status = new String[trabalho.getQuantAlunos()];
+    double[] notasA = new double[trabalho.getQuantAlunos()];
+    double[] notasB = new double[trabalho.getQuantAlunos()];
+    int[] faltas = new int[trabalho.getQuantAlunos()];
+    
+    public void Avaliar(){
+        for(int i=0 ; i<trabalho.getQuantAlunos(); i++){
+            double media;
+            media = notasA[i]+notasB[i]/2;
+            if(media<2){
+                status[i] = "REPROVADO";
+            }
+            else if(media>2&&media<7){
+                status[i] = "RECUPERACAO";
+            }
+            else{
+                status[i] = "APROVADO";
+            }
+        }
+        
     }
-
-    public void setNome_materia(String nome_materia) {
-        this.nome_materia = nome_materia;
+    
+    public int[] Recuperados(){
+        int k=0;
+        for(int i=0;i<trabalho.getQuantAlunos();i++){
+            if(status[i]=="REPROVADO"){
+                k++;
+            }
+        }
+        int[] fudidos = new int[k];
+        for(int i=0;i<k;i++){
+            fudidos[i] = i;
+        }
+        if(k==0){
+            return null;
+        }
+        else{
+            return fudidos;
+        }
     }
-
-    public double[] getNota() {
-        return nota;
-    }
-
-    public void setNota(double nota) {
-        this.nota[k] = nota;
-        k++;
-    }
-     
     
 }
 public class Notas extends javax.swing.JFrame {
-    int i=0,j=0;
+    int m=0,a=0,cfrm=6;
     int qt = trabalho.getQuantAlunos();
     String[] aluno = Alunos.getAlunos();
-    String[] materias = Disciplinas.getMaterias();
+    static String[] materias = Disciplinas.getMaterias();
+    static Materias[] materia = new Materias[trabalho.getQuantCurso()];
+        
+   
     
     
 
@@ -59,21 +84,38 @@ public class Notas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        NotaA = new javax.swing.JTextField();
+        Falta = new javax.swing.JTextField();
         But = new javax.swing.JButton();
+        NotaB = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        confirm = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         titulo.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
         titulo.setText("NOTAS E FREQUENCIA");
 
         jLabel1.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        jLabel1.setText("Nota");
+        jLabel1.setText("Nota da primeira avaliacao");
 
         jLabel2.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
         jLabel2.setText("Faltas");
@@ -81,12 +123,29 @@ public class Notas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
         jLabel3.setText("Aluno: "+aluno[i]+"   Disciplina: "+materias[j]);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        NotaA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                NotaAFocusGained(evt);
+            }
+        });
+        NotaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                NotaAActionPerformed(evt);
             }
         });
 
+        Falta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FaltaFocusGained(evt);
+            }
+        });
+        Falta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FaltaActionPerformed(evt);
+            }
+        });
+
+        But.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
         But.setText("Enviar");
         But.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,6 +158,11 @@ public class Notas extends javax.swing.JFrame {
             }
         });
 
+        NotaB.setFont(new java.awt.Font("Louis George Café Light", 0, 12)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jLabel4.setText("Nota da segunda avaliacao");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,18 +170,28 @@ public class Notas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(titulo)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(81, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(But)
-                .addGap(156, 156, 156))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(titulo)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(NotaA, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(81, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(But, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirm)
+                            .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,15 +202,23 @@ public class Notas extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(NotaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(But)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(But)
+                    .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirm)
+                .addContainerGap())
         );
 
         pack();
@@ -148,11 +230,61 @@ public class Notas extends javax.swing.JFrame {
 
     private void ButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButMouseClicked
         // TODO add your handling code here:
+        if(m==trabalho.getQuantCurso()){
+            cfrm = JOptionPane.showConfirmDialog(null, "Dados Corretos?", "Notas Cadastradas",JOptionPane.YES_NO_OPTION);
+            if(cfrm == 0){
+                for(int i=0;i<materia.length;i++){
+                    materia[i].Avaliar();
+                    Recuperacao recuperacao = new Recuperacao();
+                    recuperacao.setVisible(true);
+                    recuperacao.pack();
+                    recuperacao.setLocationRelativeTo(null);
+                    recuperacao.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
+                    this.setVisible(false);
+                }
+            }
+            else{
+                m=0;
+                a=0;
+                confirm.setText("REINSIRA OS DADOS");
+                return;
+                
+            }
+        }
+        if(a==trabalho.getQuantAlunos()-1){
+            materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
+            materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
+            materia[m].faltas[a] = Integer.parseInt(Falta.getText());
+            a=0;
+            m++;
+            return;
+            
+        }
+        materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
+        materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
+        materia[m].faltas[a] = Integer.parseInt(Falta.getText());
+        a++;
+        confirm.setText("Nota do "+materia[m].alunos[a]+ " Cadastrada");
+          
     }//GEN-LAST:event_ButMouseClicked
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void FaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FaltaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_FaltaActionPerformed
+
+    private void NotaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NotaAActionPerformed
+
+    private void NotaAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NotaAFocusGained
+        // TODO add your handling code here:
+        NotaA.setText(null);
+    }//GEN-LAST:event_NotaAFocusGained
+
+    private void FaltaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FaltaFocusGained
+        // TODO add your handling code here:
+        Falta.setText(null);
+    }//GEN-LAST:event_FaltaFocusGained
 
     /**
      * @param args the command line arguments
@@ -186,19 +318,30 @@ public class Notas extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Notas().setVisible(true);
+                for(int i=0;i<materia.length;i++){
+                materia[i] = new Materias();
+                materia[i].nome = materias[i];
+        }
             }
         });
+        
+
     }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton But;
+    private javax.swing.JTextField Falta;
+    private javax.swing.JTextField NotaA;
+    private javax.swing.JTextField NotaB;
+    private javax.swing.JLabel confirm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
