@@ -290,7 +290,8 @@ public class Notas extends javax.swing.JFrame {
             materia[m].faltas[a] = Integer.parseInt(Falta.getText());
             Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
             System.out.println(materia[m].notasA[a]);
-            System.out.println(materia[m].alunosjLabelTitulo            a=0;
+            System.out.println(materia[m].alunos[a]);
+            a=0;
             m++;
             jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
             return;
