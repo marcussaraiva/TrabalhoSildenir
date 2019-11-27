@@ -33,18 +33,37 @@ public class Disciplinas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        Confirm = new javax.swing.JLabel();
-        ButDisc = new javax.swing.JButton();
+        jLabelDisciplinas1 = new javax.swing.JLabel();
+        jPanelFundo = new javax.swing.JPanel();
         Disciplina = new javax.swing.JTextField();
+        jLabelDisciplinas = new javax.swing.JLabel();
+        ButDisc = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        Confirm = new javax.swing.JLabel();
+        jButtonLimpar = new javax.swing.JButton();
+        jLabelDisciplinas2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro Disciplinas");
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
-        jLabel1.setText("Informe as Disciplinas");
+        jLabelDisciplinas1.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelDisciplinas1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDisciplinas1.setText("Informe as Disciplinas: ");
 
-        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jPanelFundo.setBackground(new java.awt.Color(0, 51, 102));
+        jPanelFundo.setPreferredSize(new java.awt.Dimension(646, 243));
+
+        Disciplina.setFont(new java.awt.Font("Louis George Café Light", 0, 14)); // NOI18N
+        Disciplina.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                DisciplinaFocusGained(evt);
+            }
+        });
+
+        jLabelDisciplinas.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDisciplinas.setText("Informe as Disciplinas: ");
 
         ButDisc.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
         ButDisc.setText("Enviar");
@@ -59,52 +78,110 @@ public class Disciplinas extends javax.swing.JFrame {
             }
         });
 
-        Disciplina.setFont(new java.awt.Font("Louis George Café Light", 0, 14)); // NOI18N
-        Disciplina.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                DisciplinaFocusGained(evt);
+        jLabel2.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Curso: "+crs);
+
+        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        Confirm.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButtonLimpar.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLimparMouseClicked(evt);
+            }
+        });
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        jLabel2.setText("Curso: "+crs);
+        javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
+        jPanelFundo.setLayout(jPanelFundoLayout);
+        jPanelFundoLayout.setHorizontalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabelDisciplinas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(Disciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(ButDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanelFundoLayout.setVerticalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(31, 31, 31)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Disciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDisciplinas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ButDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLimpar))
+                .addGap(44, 44, 44))
+        );
+
+        jLabelDisciplinas2.setBackground(new java.awt.Color(0, 51, 102));
+        jLabelDisciplinas2.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
+        jLabelDisciplinas2.setForeground(new java.awt.Color(0, 51, 102));
+        jLabelDisciplinas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo Cefet - Copia.png"))); // NOI18N
+        jLabelDisciplinas2.setText("Cadastro Disciplinas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(ButDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Disciplina))
-                .addGap(73, 73, 73))
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jLabelDisciplinas2)))
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(225, 225, 225)
+                    .addComponent(jLabelDisciplinas1)
+                    .addContainerGap(270, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(Disciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(ButDisc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(40, 40, 40))
+                .addGap(12, 12, 12)
+                .addComponent(jLabelDisciplinas2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(238, 238, 238)
+                    .addComponent(jLabelDisciplinas1)
+                    .addContainerGap(73, Short.MAX_VALUE)))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButDiscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButDiscActionPerformed
@@ -131,7 +208,11 @@ public class Disciplinas extends javax.swing.JFrame {
                 
             }
             materias[i] = Disciplina.getText();
-            Confirm.setText(materias[i] + " inserida, insira a proxima."); 
+            Confirm.setText(materias[i] + " inserida, insira a proxima.");
+//            SETA O jTEXTFIELD DISCIPLINAS PARA VAZIO E VOLTA O CURSOR
+            Disciplina.setText("");
+            Disciplina.requestFocus();
+            
             System.out.println(materias[i]);
             i++;
             
@@ -153,6 +234,17 @@ public class Disciplinas extends javax.swing.JFrame {
     private void DisciplinaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DisciplinaFocusGained
         SetNull();
     }//GEN-LAST:event_DisciplinaFocusGained
+
+    private void jButtonLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimparMouseClicked
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+        
+        Disciplina.setText("");
+        Disciplina.requestFocus();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +289,11 @@ public class Disciplinas extends javax.swing.JFrame {
     private javax.swing.JButton ButDisc;
     private javax.swing.JLabel Confirm;
     private javax.swing.JTextField Disciplina;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelDisciplinas;
+    private javax.swing.JLabel jLabelDisciplinas1;
+    private javax.swing.JLabel jLabelDisciplinas2;
+    private javax.swing.JPanel jPanelFundo;
     // End of variables declaration//GEN-END:variables
 }
