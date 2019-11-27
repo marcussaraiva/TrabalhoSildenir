@@ -34,16 +34,20 @@ public class Alunos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanelFundo = new javax.swing.JPanel();
         Aluno = new javax.swing.JTextField();
         But = new javax.swing.JButton();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelNome1 = new javax.swing.JLabel();
+        jButtonLimpar = new javax.swing.JButton();
         Confirm = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Alunos");
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
-        jLabel1.setText("INSIRA O NOME DOS ALUNOS");
+        jPanelFundo.setBackground(new java.awt.Color(0, 51, 102));
 
         Aluno.setFont(new java.awt.Font("Louis George Café Light", 0, 14)); // NOI18N
         Aluno.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -65,46 +69,94 @@ public class Alunos extends javax.swing.JFrame {
             }
         });
 
-        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jLabelNome.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNome.setText("Aluno: ");
 
-        jLabel2.setText("Curso: "+crs);
+        jLabelNome1.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelNome1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNome1.setText("Curso - "+crs);
+
+        jButtonLimpar.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
+        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        Confirm.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
+        jPanelFundo.setLayout(jPanelFundoLayout);
+        jPanelFundoLayout.setHorizontalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabelNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabelNome1)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addComponent(But)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar)))
+                .addGap(79, 79, 79))
+        );
+        jPanelFundoLayout.setVerticalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabelNome1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNome)
+                    .addComponent(Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(But)
+                    .addComponent(jButtonLimpar))
+                .addGap(30, 30, 30))
+        );
+
+        jLabelTitulo.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(0, 51, 102));
+        jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo Cefet - Copia.png"))); // NOI18N
+        jLabelTitulo.setText("Cadastro Aluno");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(But)
-                        .addGap(182, 182, 182))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Aluno, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(139, 139, 139))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(50, 50, 50))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabelTitulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabelTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(But)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(jPanelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -129,25 +181,33 @@ public class Alunos extends javax.swing.JFrame {
             }
         }
         alunos[i] = Aluno.getText();
-        Confirm.setText(alunos[i]+"inserido, insira o proximo");
+        Confirm.setText(alunos[i]+" inserido, proximo");
         System.out.println(alunos[i]);
         i++;
- 
-        
+        Aluno.setText("");
+        Aluno.requestFocus();
+
     }//GEN-LAST:event_ButActionPerformed
 
-    public static String[] getAlunos() {
-        return alunos;
-    }
-
     private void AlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlunoMouseClicked
-    
+
     }//GEN-LAST:event_AlunoMouseClicked
 
     private void AlunoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AlunoFocusGained
         // TODO add your handling code here:
         Aluno.setText(null);
     }//GEN-LAST:event_AlunoFocusGained
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+        
+        Aluno.setText("");
+        Aluno.requestFocus();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    public static String[] getAlunos() {
+        return alunos;
+    }
 
     /**
      * @param args the command line arguments
@@ -190,7 +250,10 @@ public class Alunos extends javax.swing.JFrame {
     private javax.swing.JTextField Aluno;
     private javax.swing.JButton But;
     private javax.swing.JLabel Confirm;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelNome1;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPanelFundo;
     // End of variables declaration//GEN-END:variables
 }
