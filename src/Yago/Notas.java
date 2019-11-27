@@ -50,18 +50,18 @@ public class Notas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jPanelFundo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabelNota1 = new javax.swing.JLabel();
         NotaA = new javax.swing.JTextField();
-        Falta = new javax.swing.JTextField();
+        jLabelNota2 = new javax.swing.JLabel();
         NotaB = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        confirm = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabelFaltas = new javax.swing.JLabel();
+        Falta = new javax.swing.JTextField();
         Confirm = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,19 +75,25 @@ public class Notas extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro Notas");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
-        titulo.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
-        titulo.setText("NOTAS E FREQUENCIA");
+        jLabelTitulo.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(0, 51, 102));
+        jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo Cefet - Copia.png"))); // NOI18N
+        jLabelTitulo.setText("Cadastro Notas e Frequencias");
 
-        jLabel1.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        jLabel1.setText("Nota da primeira avaliacao");
-
-        jLabel2.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        jLabel2.setText("Faltas");
+        jPanelFundo.setBackground(new java.awt.Color(0, 51, 102));
+        jPanelFundo.setPreferredSize(new java.awt.Dimension(430, 319));
 
         jLabel3.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
+
+        jLabelNota1.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelNota1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNota1.setText("Nota 1:");
 
         NotaA.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -100,6 +106,21 @@ public class Notas extends javax.swing.JFrame {
             }
         });
 
+        jLabelNota2.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelNota2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNota2.setText("Nota 2:");
+
+        NotaB.setFont(new java.awt.Font("Louis George Café Light", 0, 12)); // NOI18N
+        NotaB.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                NotaBFocusGained(evt);
+            }
+        });
+
+        jLabelFaltas.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelFaltas.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelFaltas.setText("Faltas:");
+
         Falta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 FaltaFocusGained(evt);
@@ -111,15 +132,9 @@ public class Notas extends javax.swing.JFrame {
             }
         });
 
-        NotaB.setFont(new java.awt.Font("Louis George Café Light", 0, 12)); // NOI18N
-        NotaB.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                NotaBFocusGained(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        jLabel4.setText("Nota da segunda avaliacao");
+        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        Confirm.setForeground(new java.awt.Color(255, 255, 255));
+        Confirm.setToolTipText("Nota do Aluno, Inserida");
 
         jButton1.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
         jButton1.setText("Enviar");
@@ -129,70 +144,98 @@ public class Notas extends javax.swing.JFrame {
             }
         });
 
-        Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
-        Confirm.setText("Cadastrador de Curso");
-        Confirm.setToolTipText("Nota do Aluno, Inserida");
+        jButtonLimpar.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLimparMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
+        jPanelFundo.setLayout(jPanelFundoLayout);
+        jPanelFundoLayout.setHorizontalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanelFundoLayout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelFaltas)
+                                .addComponent(jLabelNota2)
+                                .addComponent(jLabelNota1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NotaA, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
+                            .addGap(80, 80, 80)
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonLimpar)))
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        jPanelFundoLayout.setVerticalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(NotaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelNota1))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelNota2))
+                    .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFaltas))
+                .addGap(30, 30, 30)
+                .addComponent(Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButtonLimpar))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(43, 43, 43))
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(titulo)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(NotaA, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel5))
-                        .addContainerGap(81, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Confirm)
-                            .addComponent(confirm)
-                            .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabelTitulo)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(NotaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NotaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Falta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(confirm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Confirm))
+                .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void FaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FaltaActionPerformed
@@ -247,8 +290,7 @@ public class Notas extends javax.swing.JFrame {
             materia[m].faltas[a] = Integer.parseInt(Falta.getText());
             Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
             System.out.println(materia[m].notasA[a]);
-            System.out.println(materia[m].alunos[a]);
-            a=0;
+            System.out.println(materia[m].alunosjLabelTitulo            a=0;
             m++;
             jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
             return;
@@ -272,6 +314,10 @@ public class Notas extends javax.swing.JFrame {
         // TODO add your handling code here:
         NotaB.setText(null);
     }//GEN-LAST:event_NotaBFocusGained
+
+    private void jButtonLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimparMouseClicked
 
     /**
      * @param args the command line arguments
@@ -324,14 +370,14 @@ public class Notas extends javax.swing.JFrame {
     private javax.swing.JTextField Falta;
     private javax.swing.JTextField NotaA;
     private javax.swing.JTextField NotaB;
-    private javax.swing.JLabel confirm;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelFaltas;
+    private javax.swing.JLabel jLabelNota1;
+    private javax.swing.JLabel jLabelNota2;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JPanel jPanelFundo;
     // End of variables declaration//GEN-END:variables
 }
