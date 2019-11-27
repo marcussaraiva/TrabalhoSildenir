@@ -9,11 +9,37 @@ package Yago;
  *
  * @author yagov
  */
+ class Materia{
+     int k=0;
+     int qt = trabalho.getQuantAlunos();
+     String nome_materia;
+     double nota[] = new double[qt];
+
+    public String getNome_materia() {
+        return nome_materia;
+    }
+
+    public void setNome_materia(String nome_materia) {
+        this.nome_materia = nome_materia;
+    }
+
+    public double[] getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota[k] = nota;
+        k++;
+    }
+     
+    
+}
 public class Notas extends javax.swing.JFrame {
     int i=0,j=0;
     int qt = trabalho.getQuantAlunos();
     String[] aluno = Alunos.getAlunos();
     String[] materias = Disciplinas.getMaterias();
+    
     
 
     /**
@@ -39,6 +65,7 @@ public class Notas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        But = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +80,24 @@ public class Notas extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
         jLabel3.setText("Aluno: "+aluno[i]+"   Disciplina: "+materias[j]);
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        But.setText("Enviar");
+        But.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButMouseClicked(evt);
+            }
+        });
+        But.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,6 +114,10 @@ public class Notas extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(But)
+                .addGap(156, 156, 156))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,11 +134,25 @@ public class Notas extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(But)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButActionPerformed
+
+    private void ButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButMouseClicked
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +193,7 @@ public class Notas extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton But;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
