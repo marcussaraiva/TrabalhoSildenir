@@ -30,7 +30,7 @@ public class Notas extends javax.swing.JFrame {
      * Creates new form Notas
      */
     public Notas() {
-        for(int i=0;i<materia.length;i++){
+        for(int i=0;i<qtm;i++){
         materia[i] = new Materias();
         materia[i].nome = materias[i];
                 
@@ -131,6 +131,7 @@ public class Notas extends javax.swing.JFrame {
 
         Confirm.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
         Confirm.setText("Cadastrador de Curso");
+        Confirm.setToolTipText("Nota do Aluno, Inserida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,18 +223,20 @@ public class Notas extends javax.swing.JFrame {
             if(cfrm == 0){
                 for(int i=0;i<materia.length;i++){
                     materia[i].Avaliar();
-                    Recuperacao recuperacao = new Recuperacao();
-                    recuperacao.setVisible(true);
-                    recuperacao.pack();
-                    recuperacao.setLocationRelativeTo(null);
-                    recuperacao.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
-                    this.setVisible(false);
+                    
                 }
+                Recuperacao recuperacao = new Recuperacao();
+                recuperacao.setVisible(true);
+                recuperacao.pack();
+                recuperacao.setLocationRelativeTo(null);
+                recuperacao.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
+                this.setVisible(false);
             }
             else{
                 m=0;
                 a=0;
                 Confirm.setText("REINSIRA OS DADOS");
+                
                 return;
                 
             }
@@ -242,16 +245,26 @@ public class Notas extends javax.swing.JFrame {
             materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
             materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
             materia[m].faltas[a] = Integer.parseInt(Falta.getText());
+            Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
+            System.out.println(materia[m].notasA[a]);
+            System.out.println(materia[m].alunos[a]);
             a=0;
             m++;
+            jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
             return;
             
         }else{
         materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
         materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
-        materia[m].faltas[a] = Integer.parseInt(Falta.getText());
+        materia[m].faltas[a] = Integer.parseInt(Falta.getText()); 
+        Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
+        
+        System.out.println(materia[m].notasA[a]);
+        System.out.println(materia[m].alunos[a]);
+        
         a++;
-        Confirm.setText("Nota do "+materia[m].alunos[a]+ " Cadastrada");
+        jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
+            
         }
     }//GEN-LAST:event_jButton1MouseClicked
 

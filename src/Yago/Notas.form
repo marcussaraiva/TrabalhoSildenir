@@ -21,7 +21,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Cursor Padr&#xe3;o"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -196,6 +196,7 @@
           <Font name="Louis George Caf&#xe9; Light" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cadastrador de Curso"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nota do Aluno, Inserida"/>
       </Properties>
     </Component>
   </SubComponents>
