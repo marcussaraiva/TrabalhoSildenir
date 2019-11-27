@@ -46,6 +46,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="Falta" min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -55,20 +61,13 @@
                               <Component id="NotaA" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="81" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Falta" min="-2" pref="94" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="But" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Confirm" min="-2" max="-2" attributes="0"/>
                           <Component id="confirm" min="-2" max="-2" attributes="0"/>
                           <Component id="NotaB" min="-2" pref="94" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -98,14 +97,15 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="But" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Falta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="confirm" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="Confirm" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -141,7 +141,7 @@
           <Font name="Louis George Caf&#xe9; Light" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;Aluno: &quot;+aluno[i]+&quot;   Disciplina: &quot;+materias[j]" type="code"/>
+          <Connection code="&quot;Aluno: &quot;+aluno[a]+&quot;   Disciplina: &quot;+materias[m]" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -157,24 +157,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FaltaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="But">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Louis George Caf&#xe9; Light" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Enviar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="NotaB">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Louis George Caf&#xe9; Light" size="12" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NotaBFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -187,6 +178,25 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
     </Component>
     <Component class="javax.swing.JLabel" name="confirm">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Louis George Caf&#xe9; Light" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Enviar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Confirm">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Louis George Caf&#xe9; Light" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cadastrador de Curso"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
