@@ -261,7 +261,23 @@ public class Notas extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         
-        if(m==trabalho.getQuantCurso()){
+        
+         if(a==trabalho.getQuantAlunos()-1){
+            materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
+            materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
+            materia[m].faltas[a] = Integer.parseInt(Falta.getText());
+            Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
+            System.out.println(materia[m].notasA[a]);
+            System.out.println(materia[m].alunos[a]);
+            a=0;
+            m++;
+            if(m==trabalho.getQuantCurso()){
+            jLabel3.setText("Aluno: "+materia[m-1].alunos[a]+" Disciplina: "+materia[m-1].nome);
+            }
+            else{
+                jLabel3.setText("Aluno: "+materia[m].alunos[a]+" Disciplina: "+materia[m].nome);
+            }
+            if(m==trabalho.getQuantCurso()){
             cfrm = JOptionPane.showConfirmDialog(null, "Dados Corretos?", "Notas Cadastradas",JOptionPane.YES_NO_OPTION);
             if(cfrm == 0){
                 for(int i=0;i<materia.length;i++){
@@ -284,18 +300,6 @@ public class Notas extends javax.swing.JFrame {
                 
             }
         }
-        if(a==trabalho.getQuantAlunos()-1){
-            materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
-            materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
-            materia[m].faltas[a] = Integer.parseInt(Falta.getText());
-            Confirm.setText("Nota de "+materia[m].alunos[a]+ " Cadastrada");
-            System.out.println(materia[m].notasA[a]);
-            System.out.println(materia[m].alunos[a]);
-            a=0;
-            m++;
-            jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
-            return;
-            
         }else{
         materia[m].notasA[a] = Double.parseDouble(NotaA.getText());
         materia[m].notasB[a] = Double.parseDouble(NotaB.getText());
@@ -306,9 +310,12 @@ public class Notas extends javax.swing.JFrame {
         System.out.println(materia[m].alunos[a]);
         
         a++;
-        jLabel3.setText("Aluno: "+aluno[a]+"   Disciplina: "+materias[m]);
+        
+        jLabel3.setText("Aluno: "+materia[m].alunos[a]+" Disciplina: "+materia[m].nome);
+        
             
         }
+         
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void NotaBFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NotaBFocusGained
