@@ -139,15 +139,6 @@ public class Recuperacao extends javax.swing.JFrame {
 
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         // TODO add your handling code here:
-        curso = Curso.getText();
-        quantCurso = Integer.parseInt(QuantCurso.getText());
-        quantAlunos =Integer.parseInt(Alunos.getText());
-        Disciplinas disciplinas = new Disciplinas();
-        disciplinas.setVisible(true);
-        disciplinas.pack();
-        disciplinas.setLocationRelativeTo(null);
-        disciplinas.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
-        this.setVisible(false);
 
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
