@@ -5,6 +5,9 @@
  */
 package Yago;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -280,19 +283,23 @@ public class Notas extends javax.swing.JFrame {
             if(m==trabalho.getQuantCurso()){
             cfrm = JOptionPane.showConfirmDialog(null, "Dados Corretos?", "Notas Cadastradas",JOptionPane.YES_NO_OPTION);
             if(cfrm == 0){
-                for(int i=0;i<materia.length;i++){
-                    materia[i].Avaliar();
-                    System.out.println(materia[i].status[0]);
+                try {
+                    for(int i=0;i<materia.length;i++){
+                        materia[i].Avaliar();
+                        
+                        
+                        
+                    }
                     
-                    
+                    saida exit = new saida();
+                    exit.setVisible(true);
+                    exit.pack();
+                    exit.setLocationRelativeTo(null);
+                    exit.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
+                    this.setVisible(false);
+                } catch (IOException ex) {
+                    Logger.getLogger(Notas.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                Recuperacao recuperacao = new Recuperacao();
-                recuperacao.setVisible(true);
-                recuperacao.pack();
-                recuperacao.setLocationRelativeTo(null);
-                recuperacao.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
-                this.setVisible(false);
             }
             else{
                 m=0;

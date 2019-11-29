@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package Yago;
-
+/*
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
+/***
  *
  * @author yagov
  */
-public class Recuperacao extends javax.swing.JFrame {
+public class Recuperacao extends javax.swing.JFrame {/*
     int qtm = trabalho.getQuantCurso();
     Recuperados[] recuperados = new Recuperados[qtm];
     double notaR;
@@ -29,7 +29,7 @@ public class Recuperacao extends javax.swing.JFrame {
     /**
      * Creates new form Recuperacao
      */
-    public Recuperacao() {
+    public Recuperacao() {/*
         initComponents();
         for(int i=0;i<qtm;i++){
         recuperados[i] = new Recuperados();
@@ -64,7 +64,7 @@ public class Recuperacao extends javax.swing.JFrame {
         }
         
         
-    }
+    }*/
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -176,7 +176,7 @@ public class Recuperacao extends javax.swing.JFrame {
 
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         // TODO add your handling code here:
-
+/*
 
         System.out.println(recuperados[m].quantRec);
         if (recuperados[m].quantRec==0){
@@ -245,14 +245,14 @@ public class Recuperacao extends javax.swing.JFrame {
         
         
         
-
+*/
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        
+        /*
         jTextFieldNota.setText("");
         jTextFieldNota.requestFocus();
-        
+        */
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
