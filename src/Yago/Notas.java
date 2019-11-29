@@ -282,8 +282,11 @@ public class Notas extends javax.swing.JFrame {
             if(cfrm == 0){
                 for(int i=0;i<materia.length;i++){
                     materia[i].Avaliar();
+                    System.out.println(materia[i].status[0]);
+                    
                     
                 }
+
                 Recuperacao recuperacao = new Recuperacao();
                 recuperacao.setVisible(true);
                 recuperacao.pack();

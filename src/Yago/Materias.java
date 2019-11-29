@@ -16,43 +16,49 @@ class Materias{
     String[] status = new String[trabalho.getQuantAlunos()];
     double[] notasA = new double[trabalho.getQuantAlunos()];
     double[] notasB = new double[trabalho.getQuantAlunos()];
+    double[] notasR = new double[trabalho.getQuantAlunos()];
     int[] faltas = new int[trabalho.getQuantAlunos()];
-    
-    
+    int hora = trabalho.getHoras();
+    int cota = (int) (hora * 0.25);
+    int quantRecuperacao=0;
     public void Avaliar(){
         for(int i=0 ; i<trabalho.getQuantAlunos(); i++){
             double media;
-            media = notasA[i]+notasB[i]/2;
-            if(media<2){
+            media = (notasA[i]+notasB[i])/2;
+            if(faltas[i]>cota){
+                status[i] = "REPROVADO POR FALTA";
+            }else if(media<2){
                 status[i] = "REPROVADO";
             }
-            else if(media>2&&media<7){
+            else if(media<7){
                 status[i] = "RECUPERACAO";
             }
-            else{
+            else if(media>=7) {
                 status[i] = "APROVADO";
             }
+            
         }
         
     }
     
-    public int[] Recuperados(){
-        int k=0;
+    public void Contar(){
         for(int i=0;i<trabalho.getQuantAlunos();i++){
-            if(status[i]=="REPROVADO"){
-                k++;
+            if(status[i]=="RECUPERACAO"){
+                quantRecuperacao++;
             }
         }
-        int[] fudidos = new int[k];
-        for(int i=0;i<k;i++){
-            fudidos[i] = i;
-        }
-        if(k==0){
-            return null;
-        }
-        else{
-            return fudidos;
-        }
     }
+    
+    public int[] Recupera(){
+        int[] recuperados = new int[quantRecuperacao];
+        for(int i=0;i<trabalho.getQuantAlunos();i++){
+            if(status[i]=="RECUPERACAO"){
+                recuperados[i] = i;
+                
+                
+            }
+        }
+        return recuperados;
+    }  
     
 }

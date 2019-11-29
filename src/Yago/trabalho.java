@@ -16,6 +16,7 @@ public class trabalho extends javax.swing.JFrame {
         static String curso;
         static int quantCurso;
         static int quantAlunos;
+        static int horas;
     /**
      * Creates new form trabalho
      */
@@ -46,6 +47,8 @@ public class trabalho extends javax.swing.JFrame {
         Alunos = new javax.swing.JTextField();
         But = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Horas = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,6 +138,10 @@ public class trabalho extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Carga Horaria:");
+
         javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
         jPanelFundo.setLayout(jPanelFundoLayout);
         jPanelFundoLayout.setHorizontalGroup(
@@ -143,19 +150,21 @@ public class trabalho extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(But, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelQtdAlunos)
                     .addComponent(jLabelNome)
-                    .addComponent(jLabelQtdDisciplinas))
+                    .addComponent(jLabelQtdDisciplinas)
+                    .addComponent(jLabelQtdAlunos)
+                    .addComponent(jLabel1))
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFundoLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFundoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Curso, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                             .addComponent(QuantCurso)
-                            .addComponent(Alunos)))
-                    .addGroup(jPanelFundoLayout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Alunos)
+                            .addComponent(Horas))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanelFundoLayout.setVerticalGroup(
@@ -173,7 +182,11 @@ public class trabalho extends javax.swing.JFrame {
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Alunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(But)
                     .addComponent(jButtonLimpar))
@@ -201,7 +214,7 @@ public class trabalho extends javax.swing.JFrame {
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,6 +226,7 @@ public class trabalho extends javax.swing.JFrame {
         curso = Curso.getText();
         quantCurso = Integer.parseInt(QuantCurso.getText());
         quantAlunos =Integer.parseInt(Alunos.getText());
+        horas = Integer.parseInt(Horas.getText());
         Disciplinas disciplinas = new Disciplinas();
         disciplinas.setVisible(true);
         disciplinas.pack();
@@ -248,6 +262,10 @@ public class trabalho extends javax.swing.JFrame {
 
     public void setQuantCurso(JTextField QuantCurso) {
         this.QuantCurso = QuantCurso;
+    }
+
+    public static int getHoras() {
+        return horas;
     }
 
  
@@ -312,9 +330,11 @@ public class trabalho extends javax.swing.JFrame {
     private javax.swing.JTextField Alunos;
     private javax.swing.JButton But;
     private javax.swing.JTextField Curso;
+    private javax.swing.JTextField Horas;
     private javax.swing.JTextField QuantCurso;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelQtdAlunos;
     private javax.swing.JLabel jLabelQtdDisciplinas;

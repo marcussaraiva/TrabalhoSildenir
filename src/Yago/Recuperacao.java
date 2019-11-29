@@ -5,19 +5,67 @@
  */
 package Yago;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yagov
  */
 public class Recuperacao extends javax.swing.JFrame {
+    int qtm = trabalho.getQuantCurso();
+    Recuperados[] recuperados = new Recuperados[qtm];
+    double notaR;
+    double media;
+    int a=0,m=0;
+    int pos,cfrm=6;
+    int cf =5;
+    int teste=0;
+           
+    
 
     /**
      * Creates new form Recuperacao
      */
     public Recuperacao() {
         initComponents();
+        for(int i=0;i<qtm;i++){
+        recuperados[i] = new Recuperados();
+        recuperados[i].nome = Notas.materia[i].nome;
+        Notas.materia[i].Contar();
+        recuperados[i].PosRecuperados = Notas.materia[i].Recupera();
+        recuperados[i].posMateria = i;
+        recuperados[i].quantRec = Notas.materia[i].quantRecuperacao;
+            System.out.println(recuperados[i].quantRec);
+        recuperados[i].Nomes(i);
+        }
+        cf = JOptionPane.showConfirmDialog(null, "Continuar?","Confirmacao",JOptionPane.YES_OPTION);
+        if(cf==0){
+            if (recuperados[m].quantRec==0){
+            for(int i=0;i<trabalho.quantCurso;i++){
+                if(recuperados[i].quantRec==1){
+                    teste++;
+                }
+            }
+            if(teste==0){
+                this.setVisible(false);
+                try {
+                    saida exit = new saida();
+                    exit.setVisible(true);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Recuperacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+ 
+        }
+        
+        
     }
-
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +76,6 @@ public class Recuperacao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelFundo = new javax.swing.JPanel();
-        jLabelAlunoDisciplina = new javax.swing.JLabel();
         jLabelNota = new javax.swing.JLabel();
         jTextFieldNota = new javax.swing.JTextField();
         jButtonEnviar = new javax.swing.JButton();
@@ -40,10 +87,6 @@ public class Recuperacao extends javax.swing.JFrame {
         setResizable(false);
 
         jPanelFundo.setBackground(new java.awt.Color(0, 51, 102));
-
-        jLabelAlunoDisciplina.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
-        jLabelAlunoDisciplina.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelAlunoDisciplina.setText("Adicionar Codigo");
 
         jLabelNota.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
         jLabelNota.setForeground(new java.awt.Color(250, 250, 250));
@@ -78,10 +121,6 @@ public class Recuperacao extends javax.swing.JFrame {
                 .addComponent(jTextFieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
             .addGroup(jPanelFundoLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabelAlunoDisciplina)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanelFundoLayout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jButtonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -91,9 +130,7 @@ public class Recuperacao extends javax.swing.JFrame {
         jPanelFundoLayout.setVerticalGroup(
             jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFundoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabelAlunoDisciplina)
-                .addGap(26, 26, 26)
+                .addGap(63, 63, 63)
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNota)
                     .addComponent(jTextFieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,6 +176,75 @@ public class Recuperacao extends javax.swing.JFrame {
 
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         // TODO add your handling code here:
+
+
+        System.out.println(recuperados[m].quantRec);
+        if (recuperados[m].quantRec==0){
+            while((recuperados[m].quantRec==0)&&(m!=trabalho.getQuantCurso())){
+            a=0;
+            m++;
+            
+            
+            
+        }
+        }
+        System.out.println(m);
+
+        if(a==recuperados[m].quantRec-1){             
+                pos = recuperados[m].PosRecuperados[a];
+                notaR =Integer.parseInt(jTextFieldNota.getText());
+                
+                media = ((Notas.materia[m].notasA[pos] + Notas.materia[m].notasB[pos]/2) + notaR)/2;
+                if(media>=5){
+                    Notas.materia[m].status[pos] = "APROVADO";
+                }
+                else{
+                    Notas.materia[m].status[pos] = "REPROVADO";
+                }
+                Notas.materia[m].notasR[pos] = notaR;
+                System.out.println(Notas.materia[m].status[0]);
+                System.out.println("aqui");
+                a=0;
+                m++;
+        }        
+            if(m==trabalho.getQuantCurso()){
+            cfrm = JOptionPane.showConfirmDialog(null, "Dados Corretos?", "Notas Cadastradas",JOptionPane.YES_NO_OPTION);
+            if(cfrm==0){
+                this.setVisible(false);
+                try {
+                    saida exit = new saida();
+                    exit.setVisible(true);
+                    this.setVisible(false);
+                } catch (IOException ex) {
+                    Logger.getLogger(Recuperacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "REINSIRA OS DADOS","DADOS INCORRETOS",JOptionPane.ERROR_MESSAGE);
+                m=0;
+                a=0;
+                return;
+            }
+        }
+        else{
+                notaR = Integer.parseInt(jTextFieldNota.getText());
+                pos = recuperados[m].PosRecuperados[a];
+                media = ((Notas.materia[m].notasA[pos] + Notas.materia[m].notasB[pos]/2) + notaR)/2;
+                if(media>=5){
+                    Notas.materia[m].status[pos] = "APROVADO";
+                }
+                else{
+                    Notas.materia[m].status[pos] = "REPROVADO";
+                }
+                System.out.println("la");
+                System.out.println(Notas.materia[m].status[0]);
+                a++;
+                
+            
+            }
+        
+        
+        
 
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
@@ -187,7 +293,6 @@ public class Recuperacao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEnviar;
     private javax.swing.JButton jButtonLimpar;
-    private javax.swing.JLabel jLabelAlunoDisciplina;
     private javax.swing.JLabel jLabelNota;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelFundo;
