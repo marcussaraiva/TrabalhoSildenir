@@ -36,7 +36,7 @@ class Materias{
             else if(media>=7) {
                 status[i] = "APROVADO";
             }
-            
+            System.out.println(status[i]);
         }
         
     }

@@ -20,22 +20,26 @@ public class TestaFluxoIn {
 
                 // cria a variavel baseando-se no BufferedWriter
 
-                BufferedWriter arquivo = new BufferedWriter(new FileWriter("C:\\Users\\yagov\\OneDrive\\Área de Trabalho\\Relatorio.txt", true));
+                BufferedWriter arquivo = new BufferedWriter(new FileWriter("C:\\Users\\Serjao\\Desktop\\Relatorio.txt", true));
 
  
 
                         // grava algumas bobagens
-
+                arquivo.newLine();            
                 arquivo.write("CURSO: "+trabalho.curso);
-                arquivo.write("\n");
-                arquivo.write("Nome  |  Nota A  |  Nota B  |  Recuperacao  |  Status");
+                arquivo.newLine();
+                arquivo.newLine();
+                arquivo.write("Nome  |  Nota A  |  Nota B  |  Status");
                 while(m!=trabalho.quantCurso){
-                arquivo.write(Notas.materia[m].nome);
+                    arquivo.newLine();
+                    arquivo.newLine();
+                    arquivo.write(Notas.materia[m].nome);
               
                 
-                arquivo.write("\n");
+                
                 for(int i=0;i<trabalho.getQuantAlunos();i++){
-                    arquivo.write(Notas.materia[m].alunos[i]+"  |  "+Notas.materia[m].notasA[i]+"  |  "+Notas.materia[m].notasB[i]+"  |  "+Notas.materia[m].notasR[i]+"  |  "+Notas.materia[i].status[i]+"\n");
+                    arquivo.newLine();
+                    arquivo.write(Notas.materia[m].alunos[i]+"  |  "+Notas.materia[m].notasA[i]+"  |  "+Notas.materia[m].notasB[i]+"  |  "+Notas.materia[m].status[i]);
                     
                 }
                 m++;
@@ -68,7 +72,7 @@ public class TestaFluxoIn {
 
                         // abre o arquivo
 
-                Scanner arquivo = new Scanner(new File("C:\\Users\\yagov\\OneDrive\\Área de Trabalho\\Relatorio.txt"));
+                Scanner arquivo = new Scanner(new File("C:\\Users\\Serjao\\Desktop\\Relatorio.txt"));
 
  
 
