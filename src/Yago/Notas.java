@@ -315,6 +315,11 @@ public class Notas extends javax.swing.JFrame {
         
             
         }
+//      LIMPANDO AS CASAS E CHAMANDO O FOCO PRA NOTA 1
+        NotaA.setText("");
+        NotaB.setText("");
+        Falta.setText("");
+        NotaA.requestFocus(); 
          
     }//GEN-LAST:event_jButton1MouseClicked
 
