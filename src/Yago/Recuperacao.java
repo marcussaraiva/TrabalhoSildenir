@@ -27,66 +27,136 @@ public class Recuperacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jPanelFundo = new javax.swing.JPanel();
+        jLabelAlunoDisciplina = new javax.swing.JLabel();
+        jLabelNota = new javax.swing.JLabel();
+        jTextFieldNota = new javax.swing.JTextField();
+        jButtonEnviar = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Recuperacao");
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Louis George Café Light", 0, 24)); // NOI18N
-        jLabel1.setText("recuperaçao");
+        jPanelFundo.setBackground(new java.awt.Color(0, 51, 102));
 
-        jLabel2.setFont(new java.awt.Font("Louis George Café Light", 0, 14)); // NOI18N
-        jLabel2.setText("Nota da recuperaçao");
+        jLabelAlunoDisciplina.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelAlunoDisciplina.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAlunoDisciplina.setText("Adicionar Codigo");
 
-        jTextField1.setFont(new java.awt.Font("Louis George Café Light", 0, 11)); // NOI18N
-        jTextField1.setText("nota da recu");
+        jLabelNota.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabelNota.setForeground(new java.awt.Color(250, 250, 250));
+        jLabelNota.setText("Nota da Recuperacao:");
 
-        jLabel3.setFont(new java.awt.Font("Louis George Café Light", 0, 18)); // NOI18N
-        jLabel3.setText("Aluno: X    Disciplina: X");
+        jTextFieldNota.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
 
-        jButton1.setText("Enviar");
+        jButtonEnviar.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jButtonEnviar.setText("Enviar");
+        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnviarActionPerformed(evt);
+            }
+        });
+
+        jButtonLimpar.setFont(new java.awt.Font("Louis George Café Light", 1, 14)); // NOI18N
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
+        jPanelFundo.setLayout(jPanelFundoLayout);
+        jPanelFundoLayout.setHorizontalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFundoLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabelNota)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabelAlunoDisciplina)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jButtonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136))
+        );
+        jPanelFundoLayout.setVerticalGroup(
+            jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabelAlunoDisciplina)
+                .addGap(26, 26, 26)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNota)
+                    .addComponent(jTextFieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEnviar)
+                    .addComponent(jButtonLimpar))
+                .addGap(21, 21, 21))
+        );
+
+        jLabelTitulo.setBackground(new java.awt.Color(0, 51, 102));
+        jLabelTitulo.setFont(new java.awt.Font("Louis George Café Light", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(0, 51, 102));
+        jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo Cefet - Copia.png"))); // NOI18N
+        jLabelTitulo.setText("Recuperaçao");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addComponent(jLabelTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
+        // TODO add your handling code here:
+        curso = Curso.getText();
+        quantCurso = Integer.parseInt(QuantCurso.getText());
+        quantAlunos =Integer.parseInt(Alunos.getText());
+        Disciplinas disciplinas = new Disciplinas();
+        disciplinas.setVisible(true);
+        disciplinas.pack();
+        disciplinas.setLocationRelativeTo(null);
+        disciplinas.setDefaultCloseOperation(trabalho.EXIT_ON_CLOSE);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_jButtonEnviarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        
+        jTextFieldNota.setText("");
+        jTextFieldNota.requestFocus();
+        
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,10 +194,12 @@ public class Recuperacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jButtonEnviar;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JLabel jLabelAlunoDisciplina;
+    private javax.swing.JLabel jLabelNota;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JTextField jTextFieldNota;
     // End of variables declaration//GEN-END:variables
 }
