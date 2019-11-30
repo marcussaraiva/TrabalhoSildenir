@@ -49,6 +49,7 @@ public class trabalho extends javax.swing.JFrame {
         jButtonLimpar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Horas = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +143,10 @@ public class trabalho extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Carga Horaria:");
 
+        jLabel2.setFont(new java.awt.Font("Louis George Café Light", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Horas/Aula");
+
         javax.swing.GroupLayout jPanelFundoLayout = new javax.swing.GroupLayout(jPanelFundo);
         jPanelFundo.setLayout(jPanelFundoLayout);
         jPanelFundoLayout.setHorizontalGroup(
@@ -164,7 +169,10 @@ public class trabalho extends javax.swing.JFrame {
                             .addComponent(Curso, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                             .addComponent(QuantCurso)
                             .addComponent(Alunos)
-                            .addComponent(Horas))))
+                            .addGroup(jPanelFundoLayout.createSequentialGroup()
+                                .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanelFundoLayout.setVerticalGroup(
@@ -185,7 +193,8 @@ public class trabalho extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(But)
@@ -335,6 +344,7 @@ public class trabalho extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelQtdAlunos;
     private javax.swing.JLabel jLabelQtdDisciplinas;
